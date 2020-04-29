@@ -66,36 +66,39 @@ public class PeliculaDAOTest {
     public void buscarPorId() {
         Pelicula d = peliculaDAO.buscarPorId(1);
         Assertions.assertNotNull(d);
-        
+
         //Código tarea (1)
-        assertEquals(1,d.getGeneros().size());
+        assertEquals(1, d.getGeneros().size());
     }
 
     //Código tarea(3)
     @Test
     @Order(2)
-    public void peliculasPorFechaTest(){
-                
-        GregorianCalendar cal = new GregorianCalendar(1990,0,1);
+    public void peliculasPorFechaTest() {
+        GregorianCalendar cal = new GregorianCalendar(1990, 0, 1);
         Date fechaMinima = cal.getTime();
-        
-        GregorianCalendar cal2 = new GregorianCalendar(2015,0,1);
+        GregorianCalendar cal2 = new GregorianCalendar(2015, 0, 1);
         Date fechaMaxima = cal2.getTime();
-        
-        List<Pelicula> peliculas =  peliculaDAO.peliculasPorFecha(fechaMinima, fechaMaxima);
+        List<Pelicula> peliculas = peliculaDAO.peliculasPorFecha(fechaMinima, fechaMaxima);
         System.out.println("peliculas fecha:" + peliculas);
-        assertEquals(3,peliculas.size());        
+        assertEquals(3, peliculas.size());
     }
-    
+
     //Código tarea(4)
     @Test
     @Order(3)
-    public void peliculasPorNombreTest(){
-        
-        List<Pelicula> peliculas =  peliculaDAO.peliculasPorNombre("%gran");
+    public void peliculasPorNombreTest() {
+        List<Pelicula> peliculas = peliculaDAO.peliculasPorNombre("%Voraz");
         System.out.println("peliculas nombre:" + peliculas);
-        assertEquals(1,peliculas.size());             
-        
-        //Assertions.assertNotNull(peliculas);
+        assertEquals(1, peliculas.size());
+    }
+
+    //Código tarea(5)
+    @Test
+    @Order(4)
+    public void peliculasSinGeneroTest() {
+        List<Pelicula> peliculas = peliculaDAO.peliculasSinGenero();
+        System.out.println("peliculas nombre:" + peliculas);
+        assertEquals(2, peliculas.size());
     }
 }

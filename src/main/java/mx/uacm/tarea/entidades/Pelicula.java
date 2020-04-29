@@ -44,6 +44,12 @@ public class Pelicula {
             inverseJoinColumns = @JoinColumn(name="id_genero")
     )
     private List<Genero> generos;
+    
+    
+    @Override
+    public String toString() {
+        return "{" + "id:" + this.id + ", titulo:" + this.titulo + ", fecha:"+ this.fechaEstreno +  "genero:" + this.generos + "}";
+    }
 
     public List<Genero> getGeneros() {
         return generos;
